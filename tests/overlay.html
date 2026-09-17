@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emulsion — local image editor</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header id="topbar">
+  <div id="brand">Emulsion<span class="brand-sub">local image editor</span></div>
+  <nav id="menubar" aria-label="Main menu"></nav>
+  <div id="topbar-right"><span id="doc-title"></span></div>
+</header>
+
+<div id="optionsbar"></div>
+
+<main id="chrome">
+<aside id="toolbar" aria-label="Tools"></aside>
+
+  <section id="workspace">
+    <canvas id="viewport"></canvas>
+    <div id="start-overlay">
+      <div class="start-card">
+        <div class="start-brand">Emulsion</div>
+        <p class="start-tag">A layered image editor that runs entirely on this machine.<br>
+        No accounts, no cloud, no network — your pixels never leave this folder.</p>
+        <div class="start-actions">
+          <button id="start-new" class="btn primary">New document</button>
+          <button id="start-open" class="btn">Open an image…</button>
+          <button id="start-open-project" class="btn">Open a project…</button>
+        </div>
+        <p class="start-hint">or drop an image anywhere in this window</p>
+      </div>
+    </div>
+  </section>
+
+  <aside id="panels">
+    <section class="panel" id="panel-color">
+      <h2 class="panel-title">Color</h2>
+      <div class="color-body">
+        <div class="swatches">
+          <div id="swatch-stack" title="X swaps · D resets">
+            <button id="swatch-bg" aria-label="Background color"></button>
+            <button id="swatch-fg" aria-label="Foreground color"></button>
+          </div>
+          <input id="color-hex" spellcheck="false" maxlength="7" aria-label="Hex color">
+        </div>
+        <canvas id="sv-box" width="168" height="120"></canvas>
+        <canvas id="hue-strip" width="168" height="12"></canvas>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-layers">
+      <h2 class="panel-title">Layers</h2>
+      <div class="layers-controls">
+        <select id="layer-blend" aria-label="Blend mode"></select>
+        <label class="opacity-field">Opacity
+          <input type="range" id="layer-opacity" min="0" max="100" value="100">
+          <span id="layer-opacity-val">100%</span>
+        </label>
+      </div>
+      <div id="layer-list"></div>
+      <div class="layers-footer">
+        <button data-act="add"    title="New layer">＋</button>
+        <button data-act="dup"    title="Duplicate layer">⧉</button>
+        <button data-act="merge"  title="Merge down">⤓</button>
+        <button data-act="up"     title="Move layer up">↑</button>
+        <button data-act="down"   title="Move layer down">↓</button>
+        <button data-act="del"    title="Delete layer" class="danger">🗑</button>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-history">
+      <h2 class="panel-title">History</h2>
+      <div id="history-list"></div>
+    </section>
+  </aside>
+</main>
+
+<footer id="statusbar">
+  <span id="status-zoom">—</span>
+  <span id="status-size"></span>
+  <span id="status-pos"></span>
+  <span id="status-tool" class="status-right"></span>
+</footer>
+
+<div id="modal-root"></div>
+<input type="file" id="file-input" hidden>
+
+<script src="../js/core.js"></script>
+<script src="../js/filters.js"></script>
+<script src="../js/adjust.js"></script>
+<script src="../js/fx.js"></script>
+<script src="../js/tools.js"></script>
+<script src="../js/psd.js"></script>
+<script src="../js/io.js"></script>
+<script src="../js/ui.js"></script><script src="overlay.js"></script>
+</body>
+</html>
