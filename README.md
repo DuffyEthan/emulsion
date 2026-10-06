@@ -1,12 +1,18 @@
 # Emulsion
 
 A layered, Photoshop-style image editor that runs entirely on this machine.
-No build step, no dependencies, no network, no accounts — open `index.html`
-in a browser and everything (pixels, projects, exports) stays local.
+No network, no accounts — everything (pixels, projects, exports) stays local.
 
-```
-open index.html        # macOS
-```
+There are two ways to run it:
+
+- **Desktop app** — download it for macOS or Windows (below).
+- **In a browser** — the editor itself is plain HTML/CSS/JS with no build
+  step and no dependencies, so you can just open `index.html`:
+
+  ```
+  open index.html        # macOS
+  start index.html       # Windows
+  ```
 
 See `ARCHITECTURE.md` for how the design maps onto Photoshop's real internals.
 
@@ -19,7 +25,7 @@ latest build from the
 | Platform | File |
 | --- | --- |
 | macOS (Apple Silicon + Intel) | `Emulsion-<version>-mac-universal.dmg` |
-| Windows installer (x64 / ARM64) | `Emulsion-Setup-<version>-x64.exe` / `-arm64.exe` |
+| Windows installer | `Emulsion-Setup-<version>.exe` (auto-picks x64/ARM64), or the smaller `-x64.exe` / `-arm64.exe` |
 | Windows, no install | `Emulsion-Portable-<version>.exe` |
 
 The desktop app is the exact same editor wrapped in
@@ -153,6 +159,8 @@ rasterize), and actions/batch.
 
 ## Keyboard reference
 
+On Windows, use **Ctrl** wherever ⌘ appears and **Alt** for ⌥.
+
 | Keys | Action |
 |---|---|
 | V M L W C I B S E G R O T U H Z | switch tools (O toggles Dodge/Burn) |
@@ -195,4 +203,5 @@ js/io.js       open/export images, .emulsion project format, wires
                js/psd.js into FileReader/Blob
 js/ui.js       viewport, panels, menus & submenus, dialogs (levels
                histogram, curves editor, layer styles), input routing
+desktop/       Electron desktop wrapper & packaging config (optional)
 ```
