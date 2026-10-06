@@ -5,12 +5,6 @@ No network, no accounts — everything (pixels, projects, exports) stays local.
 
 ![Emulsion Image Editor](docs/screenshot.png)
 
-> **[Watch live workflow demo (WebM)](docs/demo.webm)**
-
-<p align="center">
-  <img src="docs/demo.gif" alt="Emulsion Interactive Demo" width="600" />
-</p>
-
 There are two ways to run it:
 
 - **Desktop app** — download it for macOS or Windows (below).
