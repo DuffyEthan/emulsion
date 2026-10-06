@@ -4,8 +4,7 @@
   "version": "1.0.0",
   "description": "A layered, Photoshop-style image editor that runs entirely on this machine.",
   "author": "Ethan Duffy",
-  "license": "UNLICENSED",
-  "private": true,
+  "license": "MIT",
   "main": "desktop/main.js",
   "homepage": "https://github.com/DuffyEthan/emulsion",
   "repository": {

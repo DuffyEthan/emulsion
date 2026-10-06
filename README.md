@@ -3,6 +3,8 @@
 A layered, Photoshop-style image editor that runs entirely on this machine.
 No network, no accounts — everything (pixels, projects, exports) stays local.
 
+![Emulsion Image Editor](docs/screenshot.png)
+
 There are two ways to run it:
 
 - **Desktop app** — download it for macOS or Windows (below).
