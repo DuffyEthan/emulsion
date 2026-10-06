@@ -1,0 +1,92 @@
+{
+  "name": "emulsion",
+  "productName": "Emulsion",
+  "version": "1.0.0",
+  "description": "A layered, Photoshop-style image editor that runs entirely on this machine.",
+  "author": "Ethan Duffy",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "desktop/main.js",
+  "homepage": "https://github.com/DuffyEthan/emulsion",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DuffyEthan/emulsion.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.duffyethan.emulsion",
+    "productName": "Emulsion",
+    "copyright": "Copyright © Ethan Duffy",
+    "directories": {
+      "output": "dist",
+      "buildResources": "desktop/build"
+    },
+    "files": [
+      "index.html",
+      "css/**/*",
+      "js/**/*",
+      "desktop/main.js",
+      "package.json"
+    ],
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "publish": null,
+    "mac": {
+      "category": "public.app-category.graphics-design",
+      "icon": "desktop/build/icon.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "universal"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "title": "${productName} ${version}"
+    },
+    "win": {
+      "icon": "desktop/build/icon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "${productName}-Setup-${version}-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "${productName}-Portable-${version}.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3"
+  }
+}

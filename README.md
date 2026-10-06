@@ -10,6 +10,54 @@ open index.html        # macOS
 
 See `ARCHITECTURE.md` for how the design maps onto Photoshop's real internals.
 
+## Download the desktop app
+
+Prefer a real app with its own window and Dock/Start-menu icon? Grab the
+latest build from the
+**[Releases page](https://github.com/DuffyEthan/emulsion/releases/latest)**:
+
+| Platform | File |
+| --- | --- |
+| macOS (Apple Silicon + Intel) | `Emulsion-<version>-mac-universal.dmg` |
+| Windows installer (x64 / ARM64) | `Emulsion-Setup-<version>-x64.exe` / `-arm64.exe` |
+| Windows, no install | `Emulsion-Portable-<version>.exe` |
+
+The desktop app is the exact same editor wrapped in
+[Electron](https://www.electronjs.org/) — still fully offline, no network
+access, nothing leaves your machine.
+
+> **First launch on an unsigned build:** macOS — right-click the app →
+> **Open** (or System Settings → Privacy & Security → **Open Anyway**).
+> Windows — on the SmartScreen prompt click **More info → Run anyway**.
+
+### Building the desktop app yourself
+
+The browser version still needs nothing; Node.js is only required for the
+desktop wrapper (`desktop/main.js`).
+
+```
+npm install
+npm start              # run Emulsion in a desktop window
+npm run dist:mac       # -> dist/*.dmg, *.zip   (run on a Mac)
+npm run dist:win       # -> dist/*.exe          (run on Windows)
+```
+
+### Publishing a release
+
+`.github/workflows/desktop.yml` builds both platforms on GitHub's runners.
+Push a version tag and the installers are attached to a new GitHub Release:
+
+```
+git tag v1.0.0 && git push origin v1.0.0
+```
+
+(Or run the workflow manually from the Actions tab to just get the files as
+build artifacts.) To ship signed/notarized builds, add the repository
+secrets `MAC_CERT_P12_BASE64`, `MAC_CERT_PASSWORD`, `APPLE_ID`,
+`APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID` and/or
+`WIN_CERT_P12_BASE64`, `WIN_CERT_PASSWORD`; without them the builds are
+unsigned but work.
+
 ## What it does
 
 - **Layers** — add, duplicate, delete, reorder, rename, hide, merge down,
